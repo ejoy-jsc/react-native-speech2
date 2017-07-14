@@ -1,7 +1,7 @@
 #import "SpeechSynthesizer.h"
 #import "RCTUtils.h"
 #import "RCTLog.h"
-+#import "RCTEventDispatcher.h"
+#import "RCTEventDispatcher.h"
 
 @implementation SpeechSynthesizer
 
