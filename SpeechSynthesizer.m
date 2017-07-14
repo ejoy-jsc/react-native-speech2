@@ -15,7 +15,7 @@ RCT_EXPORT_METHOD(speakUtterance:(NSDictionary *)args callback:(RCTResponseSende
 {
     // Error if self.synthesizer was already initialized
     if (self.synthesizer) {
-        return callback(@[RCTMakeError(@"There is a speech in progress.  Use the `paused` method to know if it's paused.", nil, nil)]);
+        return callback(@[RCTMakeError(@"There is a speech in progress 222.  Use the `paused` method to know if it's paused.", nil, nil)]);
     }
 
     // Set args to variables
