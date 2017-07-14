@@ -1,8 +1,12 @@
 #import "SpeechSynthesizer.h"
 #import "RCTUtils.h"
 #import "RCTLog.h"
++#import "RCTEventDispatcher.h"
 
 @implementation SpeechSynthesizer
+
+@synthesize bridge = _bridge;
+ 
 
 RCT_EXPORT_MODULE()
 
@@ -111,6 +115,7 @@ RCT_EXPORT_METHOD(stopSpeakingAtBoundary)
 {
     if (self.synthesizer) {
         [self.synthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
+    self.synthesizer = nil;
     }
 }
 
@@ -166,6 +171,7 @@ RCT_EXPORT_METHOD(speechVoices:(RCTResponseSenderBlock)callback)
 {
     NSLog(@"Speech finished");
     self.synthesizer = nil;
+    [self.bridge.eventDispatcher sendAppEventWithName:@"FinishSpeechUtterance" body:@{}];
     
     if (self.cb) {
         // Return that the speach has started
